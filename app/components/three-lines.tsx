@@ -33,7 +33,7 @@ export default function ThreeLines({ className }: ThreeLinesProps) {
 
 		const maxParticleCount = 1000;
 		const particleCount = 500;
-		const r = 450;
+		const r = 500;
 		const rHalf = r / 2;
 		const minDistance = 90;
 		const minDistanceSq = minDistance * minDistance;
