@@ -120,6 +120,55 @@ input:-webkit-autofill:focus {
 	transition: opacity 0.4s;
 }
 
+.tech-stack-grid {
+	background-image:
+		linear-gradient(rgba(16, 185, 129, 0.7) 1px, transparent 1px),
+		linear-gradient(90deg, rgba(16, 185, 129, 0.7) 1px, transparent 1px);
+	background-size: 72px 72px;
+	animation: tech-stack-grid-move 18s linear infinite;
+	will-change: transform;
+}
+
+@keyframes tech-stack-grid-move {
+	from {
+		transform: translate3d(0, 0, 0);
+	}
+	to {
+		transform: translate3d(72px, 72px, 0);
+	}
+}
+
+.ben-firefly {
+	animation: ben-firefly-rise 5s ease-in-out infinite;
+	opacity: 0;
+	filter: saturate(1.25);
+}
+
+@keyframes ben-firefly-rise {
+	0% {
+		opacity: 0;
+		transform: translate3d(0, 0, 0) scale(0.45);
+	}
+	10% {
+		opacity: 1;
+	}
+	32% {
+		opacity: 0.62;
+		transform: translate3d(calc(var(--drift) * 0.35), -8vh, 0) scale(1.05);
+	}
+	48% {
+		opacity: 1;
+	}
+	72% {
+		opacity: 0.74;
+		transform: translate3d(calc(var(--drift) * 0.72), -18vh, 0) scale(1.25);
+	}
+	100% {
+		opacity: 0;
+		transform: translate3d(var(--drift), -30vh, 0) scale(1.55);
+	}
+}
+
 /* ViewTransition API Animations for Theme Toggle */
 html {
 	view-transition-name: theme;
