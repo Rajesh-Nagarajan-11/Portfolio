@@ -144,30 +144,6 @@ export default function ThreeLines({ className }: ThreeLinesProps) {
 			return cx + cy * GRID_SIZE + cz * GRID_SIZE * GRID_SIZE;
 		};
 
-		const addConnection = (
-			ia: number,
-			ib: number,
-			alpha: number,
-			vertexpos: number,
-			colorpos: number,
-		) => {
-			positions[vertexpos++] = particlePositions[ia];
-			positions[vertexpos++] = particlePositions[ia + 1];
-			positions[vertexpos++] = particlePositions[ia + 2];
-			positions[vertexpos++] = particlePositions[ib];
-			positions[vertexpos++] = particlePositions[ib + 1];
-			positions[vertexpos++] = particlePositions[ib + 2];
-
-			colors[colorpos++] = alpha;
-			colors[colorpos++] = alpha;
-			colors[colorpos++] = alpha;
-			colors[colorpos++] = alpha;
-			colors[colorpos++] = alpha;
-			colors[colorpos++] = alpha;
-
-			return { vertexpos, colorpos };
-		};
-
 		let animationFrameId: number;
 		let lastFrameTime = 0;
 		const frameInterval = particleCount > 240 ? 1000 / 45 : 1000 / 60;
@@ -257,15 +233,20 @@ export default function ThreeLines({ className }: ThreeLinesProps) {
 											if (distSq >= MIN_DISTANCE_SQ) continue;
 
 											const alpha = 1 - Math.sqrt(distSq) / MIN_DISTANCE;
-											const result = addConnection(
-												ia,
-												ib,
-												alpha,
-												vertexpos,
-												colorpos,
-											);
-											vertexpos = result.vertexpos;
-											colorpos = result.colorpos;
+
+											positions[vertexpos++] = particlePositions[ia];
+											positions[vertexpos++] = particlePositions[ia + 1];
+											positions[vertexpos++] = particlePositions[ia + 2];
+											positions[vertexpos++] = particlePositions[ib];
+											positions[vertexpos++] = particlePositions[ib + 1];
+											positions[vertexpos++] = particlePositions[ib + 2];
+
+											colors[colorpos++] = alpha;
+											colors[colorpos++] = alpha;
+											colors[colorpos++] = alpha;
+											colors[colorpos++] = alpha;
+											colors[colorpos++] = alpha;
+											colors[colorpos++] = alpha;
 											numConnected++;
 										}
 									}
