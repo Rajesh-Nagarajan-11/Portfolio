@@ -1,4 +1,4 @@
-import { Merriweather, Mukta } from 'next/font/google';
+import { Cormorant_Garamond, Merriweather, Mukta } from 'next/font/google';
 
 export const mukta = Mukta({
 	weight: ['200', '300', '400', '500', '600', '700'],
@@ -11,6 +11,15 @@ export const mukta = Mukta({
 export const merryWeather = Merriweather({
 	weight: ['300', '400', '700', '900'],
 	variable: '--font-merriweather',
+	subsets: ['latin'],
+	display: 'swap',
+	preload: true,
+});
+
+export const cormorant = Cormorant_Garamond({
+	weight: ['300', '400', '500', '600', '700'],
+	style: ['normal', 'italic'],
+	variable: '--font-cormorant',
 	subsets: ['latin'],
 	display: 'swap',
 	preload: true,

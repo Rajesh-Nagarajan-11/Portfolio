@@ -1,31 +1,17 @@
-import path from 'node:path';
 import type { NextConfig } from 'next';
 
-const umami_url = process.env.NEXT_PUBLIC_UMAMI_WEBSITE_URL ?? '';
 
 const nextConfig: NextConfig = {
 	reactStrictMode: true,
 	pageExtensions: ['ts', 'tsx'],
 	transpilePackages: ['next-mdx-remote'],
 	reactCompiler: true,
-	turbopack: {
-		root: path.join(__dirname, '..'),
-	},
-	experimental: {
-		turbopackFileSystemCacheForDev: true,
-	},
-	async rewrites() {
-		return [
-			{
-				source: '/umami.js',
-				destination: `${umami_url}/script.js`,
-			},
-			{
-				source: '/api/send',
-				destination: `${umami_url}/api/send`,
-			},
-		];
-	},
+	// Required for GitHub Pages static export
+	output: 'export',
+	trailingSlash: true,
+	// Set basePath to repo name when deploying to GH Pages
+	// e.g. https://rajesh-nagarajan-11.github.io/Portfolio
+	basePath: process.env.NEXT_PUBLIC_BASE_PATH ?? '',
 };
 
 export default nextConfig;
