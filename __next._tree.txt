@@ -1,5 +1,5 @@
 :HL["/Portfolio/_next/static/chunks/0occl.h5e0.hc.css","style"]
-:HL["/Portfolio/_next/static/chunks/12g5ktx_hj6ab.css","style"]
+:HL["/Portfolio/_next/static/chunks/0e.nxujrt-8s..css","style"]
 :HL["/Portfolio/_next/static/media/01e4147cff8141ee-s.p.10ked.7w885.g.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
 :HL["/Portfolio/_next/static/media/248e1dc0efc99276-s.p.0ft7o6kv5bp14.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
 :HL["/Portfolio/_next/static/media/32c830f11645148a-s.p.0rmsahyyz3cy8.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
@@ -10,4 +10,4 @@
 :HL["/Portfolio/_next/static/media/c39676f0b412effa-s.p.0_e8f~kngjhvt.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
 :HL["/Portfolio/_next/static/media/ed113078b1c8eb25-s.p.0x~bwak_5.94c.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
 :HL["/Ben10-removebg.png","image"]
-0:{"tree":{"name":"","param":null,"prefetchHints":16,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":0,"slots":null}}},"staleTime":300,"buildId":"qFIyix5h8KwXCRhYWT9pc"}
+0:{"tree":{"name":"","param":null,"prefetchHints":16,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":0,"slots":null}}},"staleTime":300,"buildId":"j2cH-77q8CxzzhjHtVBwI"}
