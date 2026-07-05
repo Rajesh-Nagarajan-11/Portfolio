@@ -2,7 +2,6 @@
 
 import { useState, useEffect } from 'react';
 import { cormorant } from 'app/fonts';
-import SplashCursor from '../splash-cursor';
 import ThreeLines from '../three-lines';
 
 const translations = [
@@ -35,7 +34,7 @@ export default function Hero() {
 	useEffect(() => {
 		const interval = setInterval(() => {
 			setCurrentIndex((prev) => (prev + 1) % translations.length);
-		}, 2000); 
+		}, 2000);
 		return () => clearInterval(interval);
 	}, []);
 
@@ -45,76 +44,70 @@ export default function Hero() {
 
 	return (
 		<main className='relative min-h-svh w-screen overflow-hidden bg-black text-white'>
-			<SplashCursor
-				containerClassName='min-h-svh w-screen'
-				className='w-full h-screen'
-				usePrimaryColors={true}
-			>
-				{/* Cube animation — left half */}
-				<div className='absolute left-0 top-0 w-full lg:w-1/2 h-full z-10 flex items-center justify-center'>
-					<div className='w-[420px] h-[420px] sm:w-[560px] sm:h-[560px] lg:w-[72vh] lg:h-[72vh] max-w-[92vw] max-h-[80vh]'>
-						<ThreeLines />
-					</div>
+			{/* Cube animation — left half (no splash) */}
+			<div data-skip-splash-cursor className='absolute left-0 top-0 w-full lg:w-1/2 h-full z-10 flex items-center justify-center'>
+				<div className='w-[490px] h-[490px] sm:w-[635px] sm:h-[635px] lg:w-[84vh] lg:h-[84vh] max-w-[98vw] max-h-[96vh]'>
+					<ThreeLines />
 				</div>
+			</div>
 
-				{/* Name text — right half */}
-				<div className='absolute right-0 top-0 hidden lg:flex w-1/2 h-full z-10 flex-col items-center justify-center pr-12'>
-					{/* Fixed height container to prevent layout shifting during language cycling */}
-					<div className='h-[420px] flex items-center justify-center'>
-						<div
-							key={currentIndex}
-							className={`animate-apple-reveal text-center select-none ${fontClass}`}
-						>
-							<p
-								className='text-3xl font-light text-white/50 mb-3 uppercase'
-								style={{
-									fontStyle: isLatin ? 'italic' : 'normal',
-									letterSpacing: '0.38em',
-								}}
-								dangerouslySetInnerHTML={{ __html: currentTranslation.greeting }}
-							/>
-							<h1
-								className='text-[6rem] lg:text-[7.5rem] xl:text-[9rem] font-semibold leading-none text-white'
-								style={{
-									letterSpacing: '-0.03em',
-									paddingBottom: '0.18em',
-								}}
-							>
-								{currentTranslation.first}
-							</h1>
-							<h1
-								className='text-[6rem] lg:text-[7.5rem] xl:text-[9rem] font-light leading-none text-white/75'
-								style={{
-									letterSpacing: '0.05em',
-									paddingBottom: '0.18em',
-								}}
-							>
-								{currentTranslation.last}
-							</h1>
-						</div>
-					</div>
-
-					{/* Decorative line — grows in width, delay 0.8s */}
+			{/* Name text — right half */}
+			<div className='absolute right-0 top-0 hidden lg:flex w-1/2 h-full z-10 flex-col items-center justify-center pr-12'>
+				{/* Fixed height container to prevent layout shifting during language cycling */}
+				<div className='h-[420px] flex items-center justify-center'>
 					<div
-						className='mt-6 h-px bg-white/25 mx-auto'
-						style={{
-							animation: 'lineGrow 1s cubic-bezier(0.22,1,0.36,1) 0.8s both',
-						}}
-					/>
-
-					{/* "Software Engineer" — slide up, delay 1.0s */}
-					<div style={{ overflow: 'hidden' }} className='mt-4'>
+						key={currentIndex}
+						className={`animate-apple-reveal text-center select-none ${fontClass}`}
+					>
 						<p
-							className='text-base sm:text-lg font-light tracking-[0.4em] text-white/50 uppercase font-sans'
+							className='text-3xl font-light text-white/50 mb-3 uppercase'
 							style={{
-								animation: 'slideUp 1s cubic-bezier(0.22,1,0.36,1) 1s both',
+								fontStyle: isLatin ? 'italic' : 'normal',
+								letterSpacing: '0.38em',
+							}}
+							dangerouslySetInnerHTML={{ __html: currentTranslation.greeting }}
+						/>
+						<h1
+							className='text-[6rem] lg:text-[7.5rem] xl:text-[9rem] font-semibold leading-none text-white'
+							style={{
+								letterSpacing: '-0.03em',
+								paddingBottom: '0.18em',
 							}}
 						>
-							Software Engineer
-						</p>
+							{currentTranslation.first}
+						</h1>
+						<h1
+							className='text-[6rem] lg:text-[7.5rem] xl:text-[9rem] font-light leading-none text-white/75'
+							style={{
+								letterSpacing: '0.05em',
+								paddingBottom: '0.18em',
+							}}
+						>
+							{currentTranslation.last}
+						</h1>
 					</div>
 				</div>
-			</SplashCursor>
+
+				{/* Decorative line — grows in width, delay 0.8s */}
+				<div
+					className='mt-6 h-px bg-white/25 mx-auto'
+					style={{
+						animation: 'lineGrow 1s cubic-bezier(0.22,1,0.36,1) 0.8s both',
+					}}
+				/>
+
+				{/* "Software Engineer" — slide up, delay 1.0s */}
+				<div style={{ overflow: 'hidden' }} className='mt-4'>
+					<p
+						className='text-base sm:text-lg font-light tracking-[0.4em] text-white/50 uppercase font-sans'
+						style={{
+							animation: 'slideUp 1s cubic-bezier(0.22,1,0.36,1) 1s both',
+						}}
+					>
+						Software Engineer
+					</p>
+				</div>
+			</div>
 
 			<style>{`
 				@keyframes slideUp {
