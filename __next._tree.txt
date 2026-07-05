@@ -10,4 +10,4 @@
 :HL["/Portfolio/_next/static/media/c39676f0b412effa-s.p.0_e8f~kngjhvt.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
 :HL["/Portfolio/_next/static/media/ed113078b1c8eb25-s.p.0x~bwak_5.94c.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
 :HL["/Ben10-removebg.png","image"]
-0:{"tree":{"name":"","param":null,"prefetchHints":16,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":0,"slots":null}}},"staleTime":300,"buildId":"D82f-CpxRTJjreza2B7Uj"}
+0:{"tree":{"name":"","param":null,"prefetchHints":16,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":0,"slots":null}}},"staleTime":300,"buildId":"YtSJ85jhbyF6r9qP8-jit"}
