@@ -64,10 +64,6 @@ export default function TechStack() {
 
           {/* Terminal Console Body */}
           <div className='p-5 sm:p-6 text-zinc-300 text-sm sm:text-base leading-relaxed'>
-            <div className='flex items-center gap-2 text-zinc-500 text-xs sm:text-sm mb-2'>
-              Last login: {new Date().toDateString()} on ttys001
-            </div>
-
             <div className='flex items-center gap-2 text-emerald-400 font-bold mb-4'>
               <span>rajesh@portfolio:~$</span>
               <span className='text-white'>npx view-skills</span>
