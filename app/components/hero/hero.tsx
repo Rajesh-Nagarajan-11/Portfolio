@@ -20,12 +20,13 @@ const translations = [
 	{ greeting: "Merhaba, ben", first: "Rajesh", last: "Nagarajan", lang: "tr" }, // Turkish
 	{ greeting: "مرحباً، أنا", first: "راجيش", last: "ناجاراجان", lang: "ar" }, // Arabic
 	{ greeting: "Xin chào, tôi là", first: "Rajesh", last: "Nagarajan", lang: "vi" }, // Vietnamese
-	{ greeting: "Привет, я", first: "Раджеш", last: "Нагараджан", lang: "ru" }, // Russian
 	{ greeting: "Cześć, jestem", first: "Rajesh", last: "Nagarajan", lang: "pl" }, // Polish
 	{ greeting: "Γεια σας, είμαι ο", first: "Rajesh", last: "Nagarajan", lang: "el" }, // Greek
 	{ greeting: "Ahoj, já jsem", first: "Rajesh", last: "Nagarajan", lang: "cs" }, // Czech
 	{ greeting: "Halo, saya", first: "Rajesh", last: "Nagarajan", lang: "id" }, // Indonesian
 	{ greeting: "Bună, eu sunt", first: "Rajesh", last: "Nagarajan", lang: "ro" }, // Romanian
+	{ greeting: "Привіт, я", first: "Rajesh", last: "Nagarajan", lang: "uk" }, // Ukrainian
+	{ greeting: "สวัสดี ฉันคือ", first: "Rajesh", last: "Nagarajan", lang: "th" }, // Thai
 ];
 
 export default function Hero() {
