@@ -1,8 +1,9 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import type { CSSProperties } from 'react';
 import { cormorant } from '@/app/fonts';
+import { useGsapReveal } from '../use-gsap-reveal';
 
 const techItems = [
   { name: 'React', src: '/react.svg' },
@@ -65,6 +66,43 @@ const resolvePublic = (p: string) => PUBLIC_BASE + (p.startsWith('/') ? p : '/' 
 export default function TechRadarSection() {
   const [index, setIndex] = useState(0);
 
+  /* GSAP reveal — terminal panel from left, character panel from right */
+  const sectionRef = useGsapReveal<HTMLElement>('[data-panel]', {
+    stagger: 0.18,
+    duration: 1.1,
+    y: 0,
+    blur: true,
+    start: 'top 80%',
+  });
+
+  /* separate x-axis reveal via raw gsap for directional slide */
+  const leftRef = useRef<HTMLDivElement>(null);
+  const rightRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    let ctx: { revert: () => void } | null = null;
+    (async () => {
+      const { gsap } = await import('gsap');
+      const { ScrollTrigger } = await import('gsap/ScrollTrigger');
+      gsap.registerPlugin(ScrollTrigger);
+      ctx = gsap.context(() => {
+        gsap.fromTo(
+          leftRef.current,
+          { opacity: 0, x: -60, filter: 'blur(8px)' },
+          { opacity: 1, x: 0, filter: 'blur(0px)', duration: 1.1, ease: 'power3.out',
+            scrollTrigger: { trigger: leftRef.current, start: 'top 82%', toggleActions: 'play none none none' } }
+        );
+        gsap.fromTo(
+          rightRef.current,
+          { opacity: 0, x: 60, filter: 'blur(8px)' },
+          { opacity: 1, x: 0, filter: 'blur(0px)', duration: 1.1, ease: 'power3.out', delay: 0.15,
+            scrollTrigger: { trigger: rightRef.current, start: 'top 82%', toggleActions: 'play none none none' } }
+        );
+      });
+    })();
+    return () => { ctx?.revert(); };
+  }, []);
+
   useEffect(() => {
     const interval = setInterval(() => {
       setIndex((prev) => (prev + 1) % allIcons.length);
@@ -74,13 +112,14 @@ export default function TechRadarSection() {
 
   return (
     <section
+      ref={sectionRef}
       id='tech-stack'
       className={`relative w-full min-h-screen flex items-center justify-center py-16 px-4 md:px-8 xl:px-16 overflow-hidden bg-black ${cormorant.className}`}
     >
       <div className='relative z-10 w-full max-w-7xl flex flex-col lg:flex-row items-center justify-center gap-12 xl:gap-20'>
 
 
-        <div className='w-full lg:w-[60%] max-w-3xl rounded-xl border border-zinc-800 bg-black overflow-hidden'>
+        <div ref={leftRef} className='w-full lg:w-[60%] max-w-3xl rounded-xl border border-zinc-800 bg-black overflow-hidden'>
 
           <div className='h-10 px-4 flex items-center justify-between bg-[#16171a] border-b border-zinc-800/80 select-none'>
             <div className='flex items-center gap-2'>
@@ -140,7 +179,7 @@ export default function TechRadarSection() {
           </div>
         </div>
 
-        <div className='relative flex-shrink-0 flex items-center justify-center select-none pointer-events-none'>
+        <div ref={rightRef} className='relative flex-shrink-0 flex items-center justify-center select-none pointer-events-none'>
           <div
             aria-hidden='true'
             className='absolute inset-x-[-18%] top-[10%] bottom-[34%] z-0 overflow-visible'

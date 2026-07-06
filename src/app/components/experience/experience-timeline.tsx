@@ -2,6 +2,7 @@
 
 import React from 'react';
 import { cormorant, libreBaskerville, jetbrains } from '@/app/fonts';
+import { useGsapReveal } from '../use-gsap-reveal';
 
 interface ExperienceItem {
   role: string;
@@ -26,10 +27,18 @@ const EXPERIENCE: ExperienceItem[] = [
 ];
 
 export default function ExperienceTimeline() {
+  const ref = useGsapReveal<HTMLDivElement>('[data-item]', {
+    stagger: 0.2,
+    duration: 1.1,
+    y: 60,
+    blur: true,
+    start: 'top 80%',
+  });
+
   return (
-    <div className="flex flex-col gap-12 sm:gap-16 md:gap-20 pl-2">
+    <div ref={ref} className="flex flex-col gap-12 sm:gap-16 md:gap-20 pl-2">
       {EXPERIENCE.map((item, idx) => (
-        <div key={idx} className="relative pl-6 sm:pl-8 md:pl-10">
+        <div key={idx} data-item className="relative pl-6 sm:pl-8 md:pl-10">
           {idx !== EXPERIENCE.length - 1 && (
             <span className="absolute left-[5px] sm:left-[6px] md:left-[7px] top-4 md:top-5 h-[calc(100%+3rem)] sm:h-[calc(100%+4rem)] md:h-[calc(100%+5rem)] w-[2px] bg-[#1b3a2a]" />
           )}

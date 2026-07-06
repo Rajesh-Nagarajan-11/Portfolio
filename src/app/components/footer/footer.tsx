@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useCallback } from 'react';
 import { cormorant, jetbrains, libreBaskerville, merryWeather } from '@/app/fonts';
+import { useGsapReveal } from '../use-gsap-reveal';
 
 /* ─── types ─────────────────────────────────────────────────────────────── */
 interface Particle {
@@ -184,6 +185,28 @@ function SplashCanvas({ sectionRef }: { sectionRef: React.RefObject<HTMLElement 
 export default function Footer() {
   const sectionRef = useRef<HTMLElement>(null);
 
+  /* GSAP stagger reveals */
+  const headingGroupRef = useGsapReveal<HTMLDivElement>('[data-h]', {
+    stagger: 0.14,
+    duration: 1,
+    y: 35,
+    blur: true,
+    start: 'top 88%',
+  });
+  const tagsRef = useGsapReveal<HTMLDivElement>('[data-tag]', {
+    stagger: 0.1,
+    duration: 0.8,
+    y: 25,
+    start: 'top 88%',
+  });
+  const socialsRef = useGsapReveal<HTMLDivElement>('[data-social]', {
+    stagger: 0.08,
+    duration: 0.75,
+    y: 30,
+    blur: true,
+    start: 'top 90%',
+  });
+
   return (
     <section
       id="contact"
@@ -201,26 +224,27 @@ export default function Footer() {
       />
 
       {/* ── heading ──────────────────────────────────────────────────────── */}
-      <div className="relative z-10 flex flex-col items-center gap-5 text-center mb-14">
-        <span className={`${jetbrains.className} text-[10px] tracking-[0.4em] uppercase text-[#39D353] opacity-70`}>
+      <div ref={headingGroupRef} className="relative z-10 flex flex-col items-center gap-5 text-center mb-14">
+        <span data-h className={`${jetbrains.className} text-[10px] tracking-[0.4em] uppercase text-[#39D353] opacity-70`}>
           Say Hello
         </span>
 
-        <h2 className="text-white text-5xl sm:text-6xl md:text-7xl font-light tracking-tight">
+        <h2 data-h className="text-white text-5xl sm:text-6xl md:text-7xl font-light tracking-tight">
           Let&apos;s Connect
         </h2>
 
-        <span className="block h-[2px] w-10 bg-[#39D353] shadow-[0_0_12px_#39D353]" />
+        <span data-h className="block h-[2px] w-10 bg-[#39D353] shadow-[0_0_12px_#39D353]" />
 
-        <p className={`${merryWeather.className} text-zinc-500 text-sm sm:text-base font-light max-w-md leading-relaxed mt-1`}>
+        <p data-h className={`${merryWeather.className} text-zinc-500 text-sm sm:text-base font-light max-w-md leading-relaxed mt-1`}>
           Always open to interesting conversations, collaborations and new ideas.
         </p>
       </div>
 
       {/* ── availability tags ─────────────────────────────────────────────── */}
-      <div className="relative z-10 flex flex-wrap items-center justify-center gap-3 mb-16">
+      <div ref={tagsRef} className="relative z-10 flex flex-wrap items-center justify-center gap-3 mb-16">
         {TAGS.map((tag) => (
           <span
+            data-tag
             key={tag.id}
             id={tag.id}
             className={`${merryWeather.className} inline-flex items-center gap-2 text-[10px] tracking-[0.25em] uppercase text-zinc-400 border border-zinc-800 rounded-full px-4 py-1.5 bg-zinc-950/60`}
@@ -232,9 +256,10 @@ export default function Footer() {
       </div>
 
       {/* ── social logo icons ─────────────────────────────────────────────── */}
-      <div className="relative z-10 flex flex-wrap items-center justify-center gap-6 sm:gap-8">
+      <div ref={socialsRef} className="relative z-10 flex flex-wrap items-center justify-center gap-6 sm:gap-8">
         {SOCIALS.map((s) => (
           <a
+            data-social
             key={s.id}
             id={s.id}
             href={s.href || '#'}
