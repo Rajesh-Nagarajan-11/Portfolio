@@ -5,6 +5,10 @@ on:
     branches:
       - main      
   workflow_dispatch: 
+  workflow_run:
+    workflows: ["GitHub Snake Game"]
+    types:
+      - completed
 
 permissions:
   contents: write
@@ -12,6 +16,7 @@ permissions:
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
+    if: ${{ github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success' }}
 
     steps:
       - name: Checkout

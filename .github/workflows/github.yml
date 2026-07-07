@@ -16,6 +16,8 @@ jobs:
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
+        with:
+          ref: ${{ github.head_ref || github.ref_name }}
 
       - name: Generate GitHub Snake
         uses: Platane/snk@v3
@@ -31,3 +33,4 @@ jobs:
         with:
           commit_message: "Update GitHub snake"
           file_pattern: public/github-snake-dark.svg
+          branch: ${{ github.head_ref || github.ref_name }}
