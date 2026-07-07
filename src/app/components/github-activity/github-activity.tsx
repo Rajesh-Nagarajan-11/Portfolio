@@ -34,7 +34,7 @@ export default function GithubActivity() {
           </div>
           <div className="w-full overflow-hidden">
             <img
-              src="/github-snake-dark.svg"
+              src={`${process.env.NEXT_PUBLIC_BASE_PATH ?? ''}/github-snake-dark.svg`}
               alt="GitHub Contribution Snake"
               className="w-full h-auto select-none"
             />
