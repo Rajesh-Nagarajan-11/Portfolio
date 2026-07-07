@@ -29,5 +29,5 @@ jobs:
       - name: Commit Updated Snake
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
-          commit_message: "Update GitHub snake [skip ci]"
+          commit_message: "Update GitHub snake"
           file_pattern: public/github-snake-dark.svg
