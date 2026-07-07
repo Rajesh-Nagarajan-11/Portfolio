@@ -34,3 +34,5 @@ jobs:
           commit_message: "Update GitHub snake"
           file_pattern: public/github-snake-dark.svg
           branch: ${{ github.head_ref || github.ref_name }}
+          skip_dirty_check: true
+          commit_options: '--allow-empty'
