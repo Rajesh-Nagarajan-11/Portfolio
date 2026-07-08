@@ -20,7 +20,7 @@ jobs:
           ref: ${{ github.head_ref || github.ref_name }}
 
       - name: Generate GitHub Snake
-        uses: Rajesh-Nagarajan-11/snk@main
+        uses: Platane/snk@v3
         with:
           github_user_name: ${{ github.repository_owner }}
           outputs: |
